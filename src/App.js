@@ -17,7 +17,6 @@ export default function App() {
   return (
 <div>
     <Home />
-    <p>okokok</p>
     </div>
   )
 }
