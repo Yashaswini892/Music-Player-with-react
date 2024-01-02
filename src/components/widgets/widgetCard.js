@@ -16,6 +16,7 @@ export default function WidgetCard({ title, similar, featured, newRelease }) {
   return (
     <div className="widgetcard-body">
       <p className="widget-title">{title}</p>
+      <p style = {{fontSize: "12px"}}>To discover more, Download Spotify Now!!!</p>
       {similar
         ? similar.map((artist) => (
             <WidgetEntry

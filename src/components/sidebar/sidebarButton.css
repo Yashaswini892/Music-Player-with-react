@@ -25,7 +25,7 @@ a{
 }
 
 .btn-body.active{
-    background-color: rgba(244, 187, 146,1);
+    background-color: rgb(113, 57, 182);
     color: #fff;
     transform: scale(1.05);
 }

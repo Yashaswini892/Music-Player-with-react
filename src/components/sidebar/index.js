@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import './sidebar.css';
 import SidebarButton from './sidebarButton';
 import { FaPlay } from "react-icons/fa";
-import { FaSignOutAlt } from "react-icons/fa";
+import { IoIosLogOut } from "react-icons/io";
 import { IoLibrary } from "react-icons/io5";
 import apiClient from '../../spotify';
 
@@ -29,8 +29,10 @@ export default function SideBar() {
     <div>
         <SidebarButton title="Player" to="/player" icon={<FaPlay />} />
         <SidebarButton title="Library" to="/" icon={<IoLibrary />} />
+        <SidebarButton title="Logout" to="/logout" icon={<IoIosLogOut />} /> {/* Replace with the actual logout icon */}
+
     </div>
-    <SidebarButton title="Sign Out" to = "/"  icon={<FaSignOutAlt />} />
+    {/* <SidebarButton title="Sign Out" to = "/"  icon={<FaSignOutAlt />} /> */}
     </div>
   )
 }

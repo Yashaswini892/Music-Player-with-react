@@ -36,11 +36,110 @@ export default function AudioPlayer({
     }, [1000]);
   };
 
+  // useEffect(() => {
+  //   if (audioRef.current.src) {
+  //     if (isPlaying) {
+  //       audioRef.current.play();
+  //       startTimer();
+  //     } else {
+  //       clearInterval(intervalRef.current);
+  //       audioRef.current.pause();
+  //     }
+  //   } else {
+  //     if (isPlaying) {
+  //       audioRef.current = new Audio(audioSrc);
+  //       audioRef.current.play();
+  //       startTimer();
+  //     } else {
+  //       clearInterval(intervalRef.current);
+  //       audioRef.current.pause();
+  //     }
+  //   }
+  // }, [isPlaying]);
+
+  // useEffect(() => {
+  //   audioRef.current.pause();
+  //   audioRef.current = new Audio(audioSrc);
+
+  //   setTrackProgress(audioRef.current.currentTime);
+
+  //   if (isReady.current) {
+  //     audioRef.current.play();
+  //     setIsPlaying(true);
+  //     startTimer();
+  //   } else {
+  //     isReady.current = true;
+  //   }
+  // }, [currentIndex]);
+
+  // useEffect(() => {
+  //   // ... (existing code)
+
+  //   if (audioRef.current.src) {
+  //     if (isPlaying) {
+  //       audioRef.current.play()
+  //         .then(() => {
+  //           startTimer();
+  //         })
+  //         .catch(e => {
+  //           console.error("Play Error:", e);
+  //         });
+  //     } else {
+  //       clearInterval(intervalRef.current);
+  //       audioRef.current.pause();
+  //     }
+  //   } else {
+  //     if (isPlaying) {
+  //       audioRef.current = new Audio(audioSrc);
+  //       audioRef.current.play()
+  //         .then(() => {
+  //           startTimer();
+  //         })
+  //         .catch(e => {
+  //           console.error("Play Error:", e);
+  //         });
+  //     } else {
+  //       clearInterval(intervalRef.current);
+  //       audioRef.current.pause();
+  //     }
+  //   }
+  // }, [isPlaying]);
+
+  // useEffect(() => {
+  //   audioRef.current.pause();
+  //   audioRef.current = new Audio(audioSrc);
+
+  //   audioRef.current.addEventListener("error", (e) => {
+  //     console.error("Audio Error:", e);
+  //   });
+
+  //   setTrackProgress(audioRef.current.currentTime);
+
+  //   if (isReady.current) {
+  //     audioRef.current.play()
+  //       .then(() => {
+  //         setIsPlaying(true);
+  //         startTimer();
+  //       })
+  //       .catch(e => {
+  //         console.error("Play Error:", e);
+  //       });
+  //   } else {
+  //     isReady.current = true;
+  //   }
+  // }, [currentIndex]);
+
   useEffect(() => {
     if (audioRef.current.src) {
       if (isPlaying) {
-        audioRef.current.play();
-        startTimer();
+        audioRef.current.play()
+          .then(() => {
+            startTimer();
+          })
+          .catch(e => {
+            console.error("Play Error:", e);
+            console.error("Error Stack Trace:", e.stack);
+          });
       } else {
         clearInterval(intervalRef.current);
         audioRef.current.pause();
@@ -48,8 +147,14 @@ export default function AudioPlayer({
     } else {
       if (isPlaying) {
         audioRef.current = new Audio(audioSrc);
-        audioRef.current.play();
-        startTimer();
+        audioRef.current.play()
+          .then(() => {
+            startTimer();
+          })
+          .catch(e => {
+            console.error("Play Error:", e);
+            console.error("Error Stack Trace:", e.stack);
+          });
       } else {
         clearInterval(intervalRef.current);
         audioRef.current.pause();
@@ -61,16 +166,31 @@ export default function AudioPlayer({
     audioRef.current.pause();
     audioRef.current = new Audio(audioSrc);
 
+    audioRef.current.addEventListener("error", (e) => {
+      console.error("Audio Error:", e);
+      console.error("Error Stack Trace:", e.error.stack);
+    });
+
     setTrackProgress(audioRef.current.currentTime);
 
     if (isReady.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
-      startTimer();
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+          startTimer();
+        })
+        .catch(e => {
+          console.error("Play Error:", e);
+          console.error("Error Stack Trace:", e.stack);
+        });
     } else {
       isReady.current = true;
     }
   }, [currentIndex]);
+
+
+
+
 
   useEffect(() => {
     return () => {
@@ -97,6 +217,8 @@ export default function AudioPlayer({
   currentTrack?.album?.artists.forEach((artist) => {
     artists.push(artist.name);
   });
+
+
   return (
     <div className="player-body flex">
       <div className="player-left-body">
