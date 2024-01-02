@@ -69,3 +69,28 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### React Project: Spotify Music Player
+
+Overview:
+The Spotify Music Player project is a React-based application that allows users to access and play short audio music which is provided by artist in their music albums from the Spotify API. With this API, I have made a Spotify music player with the customized styles
+
+Key Features:
+
+1. User Authentication:
+   - Implements secure user authentication using the Spotify API to allow users to log in with their Spotify credentials.
+
+2. Playlist Management:
+   - Enables users to view and manage their Spotify playlists within the application.
+
+3. Real-Time Data Updates:
+   - Utilizes real-time updates from the Spotify API to reflect changes in the user's Spotify account dynamically.
+
+4. Pick and Play:
+   - Implements a functionality which we are open to select to play any album's music, enabling users to discover and play tracks directly from the Spotify library.
+
+5. Responsive Design:
+   - The UI part of this project and the smoothness of the application is the main highlight of this project. This design is the customization within my creativity and turned out well.
+
+6. Playback Controls:
+   - Integrates playback controls such as play, pause, play previous song and play after song for a seamless user experience.
